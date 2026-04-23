@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sat Network SRL - App Madre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Pantalla de Login -->
+    <div id="login-screen" class="screen">
+        <div class="card">
+            <h2>Sat Network SRL</h2>
+            <p>Acceso Administrativo</p>
+            <input type="text" id="username" placeholder="Usuario">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button onclick="handleLogin()">Entrar</button>
+        </div>
+    </div>
+
+    <!-- Panel Principal (Oculto al inicio) -->
+    <div id="main-panel" class="screen" style="display:none;">
+        <header>
+            <h1>Sat Network SRL</h1>
+            <button class="btn-small" onclick="logout()">Cerrar Sesión</button>
+        </header>
+
+        <div class="container">
+            <section class="card">
+                <h3>Registrar Nuevo Pago</h3>
+                <input type="text" id="cliente-nombre" placeholder="Nombre del Cliente">
+                <input type="text" id="cliente-direccion" placeholder="Dirección del Cliente">
+                <input type="number" id="cliente-monto" placeholder="Monto Mensual (RD$)">
+                <input type="tel" id="cliente-whatsapp" placeholder="WhatsApp (ej. 8091234567)">
+                <button onclick="registrarYEnviar()">Generar Factura & Enviar</button>
+            </section>
+
+            <section class="card">
+                <h3>Configuración App Madre</h3>
+                <p><small>Modifica los datos que aparecen en la factura</small></p>
+                <input type="text" id="config-nombre" value="Sat Network SRL">
+                <input type="text" id="config-tel" value="809-201-8177">
+                <input type="text" id="config-dir" value="Calle Principal Villa Satélite">
+                <button class="btn-secundario" onclick="guardarConfig()">Actualizar Datos Empresa</button>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <div id="factura-visual" style="position: absolute; left: -9999px; width: 400px; background: white; padding: 20px; border: 1px solid #eee;">
+    <div style="text-align: center; border-bottom: 2px solid #0056b3; padding-bottom: 10px;">
+        <h2 id="f-empresa" style="margin:0; color:#0056b3;"></h2>
+        <p id="f-dir" style="margin:5px 0; font-size:12px;"></p>
+        <p id="f-tel" style="margin:5px 0; font-size:12px;"></p>
+    </div>
+    <div style="margin-top: 20px;">
+        <p><strong>Fecha:</strong> <span id="f-fecha"></span></p>
+        <p><strong>Cliente:</strong> <span id="f-cliente"></span></p>
+        <p><strong>Dirección:</strong> <span id="f-cliente-dir"></span></p>
+        <hr>
+        <h3 style="text-align: right; color: #28a745;">Total Pagado: RD$ <span id="f-monto"></span></h3>
+    </div>
+    <div style="text-align: center; margin-top: 20px; font-size: 10px; color: #888;">
+        Gracias por su preferencia - Comprobante Digital
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</body>
+</html>
